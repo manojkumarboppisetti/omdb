@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>OMDB</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+</head>
+
+<body>
+    <div ng-app="myApp" ng-controller="myCtrl" class="container">
+        <H1>OMDB</H1>
+        Enter a Movie Name:<input class="form-control" type="text" ng-model="movie" ng-keyup="$event.keyCode == 13 ? moviesDetails(movie) : null">
+        <input class="btn btn-warning" type="button" ng-click="moviesDetails(movie)" value="GetDetails">
+        <div class="container">
+            <table ng-if="Movie.Response">
+                <tr>
+                    <td>Movie.Title:</td>
+                    <td>{{Movie.Title}}</td>
+                    <tr/>
+                    <tr>
+                        <td>Movie.Actors:</td>
+                        <td>{{Movie.Actors}}</td>
+                        <tr/>
+                        <tr>
+                            <td>Movie.Year:</td>
+                            <td>{{Movie.Year}}</td>
+                            <tr/>
+                            <td>Movie.Runtime:</td>
+                            <td>{{Movie.Runtime}}</td>
+                            <tr/>
+                            <tr>
+                                <td>Movie.Director:</td>
+                                <td>{{Movie.Director}}</td>
+                                <tr/>
+                                <tr>
+                                    <td>Movie.Language:</td>
+                                    <td>{{Movie.Language}}</td>
+                                    <tr/>
+                                    <tr>
+                                        <td>Movie.Website:</td>
+                                        <td>{{Movie.Website}}</td>
+                                        <tr/>
+                                        <tr>
+                                            <td>Movie.Production:</td>
+                                            <td>{{Movie.Production}}</td>
+                                            <tr/>
+                                            <tr>
+                                                <td>Movie.DVD:</td>
+                                                <td>{{Movie.DVD}}</td>
+                                                <tr/>
+                                                <tr>
+                                                    <td>Movie.Awards:</td>
+                                                    <td>{{Movie.Awards}}</td>
+                                                    <tr/>
+                                                    <tr>
+                                                        <td>Movie.Country:</td>
+                                                        <td>{{Movie.Country}}</td>
+                                                        <tr/>
+                                                        <tr>
+                                                            <td>Movie.Plot:</td>
+                                                            <td>{{Movie.Plot}}</td>
+                                                            <tr/>
+                                                            <tr>
+            </table>
+            <div ng-if="Movie.Response==='True'">
+                <img ng-src="{{ Movie.Poster=='N/A' ? 'http://placehold.it/150x220&text=N/A' : Movie.Poster }}">
+            </div>
+            <div ng-if="Movie.Response==='False'">
+                Sorry details could not found try again
+            </div>
+        </div>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.min.js"></script>
+        <script src="script.js">
+
+
+        </script>
+</body>
+
+</html>
